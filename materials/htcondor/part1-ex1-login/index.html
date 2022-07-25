@@ -1170,14 +1170,13 @@
 <p>The goal of this first exercise is simply to log in to the local submit server and look around a little bit, which will take only a few minutes. </p>
 <p><strong>If you have trouble getting SSH access to the submit server, ask the instructors right away! Gaining access is critical for all remaining exercises.</strong></p>
 <h2 id="logging-in">Logging In<a class="headerlink" href="#logging-in" title="Permanent link">&para;</a></h2>
-<p>Today, you will use a submit server named <code>learn.chtc.wisc.edu</code>, which will allow you to submit jobs to our local HTCondor pool in CHTC.</p>
+<p>Today, you will use CHTC's local HTC Pool via an access point named <code>learn.chtc.wisc.edu</code> using the UW NetID account you set up. (This account is separate from the account you set up for the OSG Connect service, which you'll use starting tomorrow to run on OSG's Open Science Pool.)</p>
 <p>To log in, use a <a href="http://en.wikipedia.org/wiki/Secure_Shell">Secure Shell</a> (SSH) client.</p>
 <ul>
-<li>From a Mac or Linux computer, run the Terminal app and use the <code>ssh</code> command, like so:</li>
+<li>From a Mac or Linux computer, start the Terminal app and run the below <code>ssh</code> command, replacing \&lt;USERNAME> with your NetID username:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="hll"># Change &lt;USERNAME&gt; to your username
-</span>username@learn $ ssh &lt;USERNAME&gt;@learn.chtc.wisc.edu
-</code></pre></div>
+<div class="codehilite"><pre><span></span><code><span class="hll">$ ssh &lt;USERNAME&gt;@learn.chtc.wisc.edu
+</span></code></pre></div>
 
 <ul>
 <li>On Windows, we recommend a free client called <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a>,
