@@ -1246,7 +1246,7 @@ We will not fix it, but instead use it to simulate a program that can fail and t
 <li>Submit the file, note the ClusterId, and wait for the jobs to finish.</li>
 </ol>
 <p>What output do you expect? What output did you get? If you are curious about the exit code from the job, it is saved in completed jobs in <code>condor_history</code> in the <code>ExitCode</code> attribute. The following command will show the <code>ExitCode</code> for a given cluster of jobs:</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">username@learn $ </span>condor_history &lt;CLUSTER&gt; -af ProcId ExitCode
+<div class="codehilite"><pre><span></span><code><span class="gp">username@login05 $ </span>condor_history &lt;CLUSTER&gt; -af ProcId ExitCode
 </code></pre></div>
 
 <p>(Be sure to replace <code>&lt;cluster&gt;</code> with your actual cluster ID. The command may take a minute or so to complete.)</p>
