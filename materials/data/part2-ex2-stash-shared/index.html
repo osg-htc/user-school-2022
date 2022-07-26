@@ -1318,11 +1318,11 @@ jobs if they know how to use <code>stashcp</code>, though no one else will be ab
 For your own work in the future, make sure that you never put any sensitive data in such locations.</p>
 <h3 id="check-the-file-on-osg-connect">Check the file on OSG Connect<a class="headerlink" href="#check-the-file-on-osg-connect" title="Permanent link">&para;</a></h3>
 <p>Next, you can check for the file and test the command that we'll use in jobs on the OSG Connect login node:</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>ls /public/&lt;USERNAME&gt;
+<div class="codehilite"><pre><span></span><code><span class="gp">user@login05 $ </span>ls /public/&lt;USERNAME&gt;
 </code></pre></div>
 
 <p>Now, test a copy of the file from StashCache into your <code>/home</code> directory on <code>login05.osgconnect.net</code>:</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>stashcp /osgconnect/public/&lt;USERNAME&gt;/pdbaa_files.tar.gz ./
+<div class="codehilite"><pre><span></span><code><span class="gp">user@login05 $ </span>stashcp /osgconnect/public/&lt;USERNAME&gt;/pdbaa_files.tar.gz ./
 </code></pre></div>
 
 <p>Replacing all instances of <code>&lt;USERNAME&gt;</code> with your username on <code>login05.osgconnect.net</code>.

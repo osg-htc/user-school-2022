@@ -1315,26 +1315,26 @@ test_open_terminal.mov
 <h2 id="software">Software<a class="headerlink" href="#software" title="Permanent link">&para;</a></h2>
 <p>We'll be using a multi-purpose media tool called <code>ffmpeg</code>  to convert video formats.
 The basic command to convert a file looks like this: </p>
-<div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>./ffmpeg -i input.mov output.mp4
+<div class="codehilite"><pre><span></span><code><span class="gp">user@login05 $ </span>./ffmpeg -i input.mov output.mp4
 </code></pre></div>
 
 <p>In order to resize our files, we're going to manually set the video bitrate and resize the frames, so that the resulting
 file is smaller.</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>./ffmpeg -i input.mp4 -b:v 400k -s 640x360 output.mp4
+<div class="codehilite"><pre><span></span><code><span class="gp">user@login05 $ </span>./ffmpeg -i input.mp4 -b:v 400k -s 640x360 output.mp4
 </code></pre></div>
 
 <p>To get the <code>ffmpeg</code> binary do the following:</p>
 <ol>
 <li>
 <p>We'll be downloading the <code>ffmpeg</code> pre-built static binary originally from this page: <a href="http://johnvansickle.com/ffmpeg/">http://johnvansickle.com/ffmpeg/</a>. </p>
-<div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>wget http://stash.osgconnect.net/public/osg/user-school-2022/ffmpeg-release-64bit-static.tar.xz
+<div class="codehilite"><pre><span></span><code><span class="gp">user@login05 $ </span>wget http://stash.osgconnect.net/public/osg/user-school-2022/ffmpeg-release-64bit-static.tar.xz
 </code></pre></div>
 
 </li>
 <li>
 <p>Once the binary is downloaded, un-tar it, and then copy the main <code>ffmpeg</code> program into your current directory: </p>
-<div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>tar -xf ffmpeg-release-64bit-static.tar.xz
-<span class="gp">user@login04 $ </span>cp ffmpeg-4.0.1-64bit-static/ffmpeg ./
+<div class="codehilite"><pre><span></span><code><span class="gp">user@login05 $ </span>tar -xf ffmpeg-release-64bit-static.tar.xz
+<span class="gp">user@login05 $ </span>cp ffmpeg-4.0.1-64bit-static/ffmpeg ./
 </code></pre></div>
 
 </li>

@@ -1299,28 +1299,28 @@ For our input file, we'll use an abbreviated fasta file with mouse genome inform
 <ol>
 <li>
 <p>Copy the BLAST executables:</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>wget http://stash.osgconnect.net/public/osg/user-school-2022/ncbi-blast-2.12.0+-x64-linux.tar.gz
-<span class="gp">user@login04 $ </span>tar -xzvf ncbi-blast-2.12.0+-x64-linux.tar.gz
+<div class="codehilite"><pre><span></span><code><span class="gp">user@login05 $ </span>wget http://stash.osgconnect.net/public/osg/user-school-2022/ncbi-blast-2.12.0+-x64-linux.tar.gz
+<span class="gp">user@login05 $ </span>tar -xzvf ncbi-blast-2.12.0+-x64-linux.tar.gz
 </code></pre></div>
 
 </li>
 <li>
 <p>Download these files to your current directory:</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>wget http://stash.osgconnect.net/public/osg/user-school-2022/pdbaa.tar.gz
-<span class="gp">user@login04 $ </span>wget http://stash.osgconnect.net/public/osg/user-school-2022/mouse.fa
+<div class="codehilite"><pre><span></span><code><span class="gp">user@login05 $ </span>wget http://stash.osgconnect.net/public/osg/user-school-2022/pdbaa.tar.gz
+<span class="gp">user@login05 $ </span>wget http://stash.osgconnect.net/public/osg/user-school-2022/mouse.fa
 </code></pre></div>
 
 </li>
 <li>
 <p>Untar the <code>pdbaa</code> database:</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>tar -xzvf pdbaa.tar.gz
+<div class="codehilite"><pre><span></span><code><span class="gp">user@login05 $ </span>tar -xzvf pdbaa.tar.gz
 </code></pre></div>
 
 </li>
 </ol>
 <h2 id="understanding-blast">Understanding BLAST<a class="headerlink" href="#understanding-blast" title="Permanent link">&para;</a></h2>
 <p>Remember that <code>blastx</code> is executed in a command like the following:</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>./blastx -db &lt;DATABASE ROOTNAME&gt; -query &lt;INPUT FILE&gt; -out &lt;RESULTS FILE&gt;
+<div class="codehilite"><pre><span></span><code><span class="gp">user@login05 $ </span>./blastx -db &lt;DATABASE ROOTNAME&gt; -query &lt;INPUT FILE&gt; -out &lt;RESULTS FILE&gt;
 </code></pre></div>
 
 <p>In the above, the <code>&lt;INPUT FILE&gt;</code> is the name of a file containing a number of genetic sequences (e.g. <code>mouse.fa</code>), and
@@ -1339,19 +1339,19 @@ run a hypothetical BLAST job with a wrapper script, where the job:</p>
 <ul>
 <li>
 <p>List the size of a specific file:</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>ls -lh &lt;FILE NAME&gt;
+<div class="codehilite"><pre><span></span><code><span class="gp">user@login05 $ </span>ls -lh &lt;FILE NAME&gt;
 </code></pre></div>
 
 </li>
 <li>
 <p>List the sizes of all files in the current directory:</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>ls -lh
+<div class="codehilite"><pre><span></span><code><span class="gp">user@login05 $ </span>ls -lh
 </code></pre></div>
 
 </li>
 <li>
 <p>Sum the size of all files in a specific directory:</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>du -sh &lt;DIRECTORY&gt;
+<div class="codehilite"><pre><span></span><code><span class="gp">user@login05 $ </span>du -sh &lt;DIRECTORY&gt;
 </code></pre></div>
 
 </li>

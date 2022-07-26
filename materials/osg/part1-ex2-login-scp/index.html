@@ -1398,7 +1398,7 @@ however, if you had an OSG Connect account from before the School (you know who 
 you <em>may</em> be using <code>login05.osgconnect.net</code>, so just change the examples as needed.</p>
 <p>To log in to the OSG Connect Access Point,
 use the username and SSH key that you made when you set up OSG Connect.
-If you have any issues logging in to <code>login04</code> (or <code>login05</code>, if that’s you),
+If you have any issues logging in to <code>login05</code> (or <code>login05</code>, if that’s you),
 please ask for help right away!</p>
 <p>So please <code>ssh</code> in to the server and take a look around:</p>
 <ol>
@@ -1429,20 +1429,20 @@ and wanted to copy the file <code>foo</code> from your current directory
 to your home directory on <code>learn.chtc.wisc.edu</code>,
 and if your usernames are the same on both servers,
 the command would look like this:</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>scp foo learn.chtc.wisc.edu:
+<div class="codehilite"><pre><span></span><code><span class="gp">user@login05 $ </span>scp foo learn.chtc.wisc.edu:
 </code></pre></div>
 
 <p>Additionally, you could <em>pull</em> files from <code>learn.chtc.wisc.edu</code> to <code>login05.osgconnect.net</code>.
 The following command copies <code>bar</code> from your home directory on <code>learn.chtc.wisc.edu</code>
 to your current directory on <code>login05.osgconnect.net</code>;
 and in this case, the username (Net ID) for <code>learn</code> is specified:</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>scp net_id@learn.chtc.wisc.edu:bar .
+<div class="codehilite"><pre><span></span><code><span class="gp">user@login05 $ </span>scp net_id@learn.chtc.wisc.edu:bar .
 </code></pre></div>
 
 <p>Also, you can copy folders between servers using the <code>-r</code> option.
 If you kept all your files from the HTCondor exercise 1.3 in a folder named <code>htc-1.3</code> on <code>learn.chtc.wisc.edu</code>,
 you could use the following command to copy them to your home directory on <code>login05.osgconnect.net</code>:</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>scp -r net_id@learn.chtc.wisc.edu:htc-1.3 .
+<div class="codehilite"><pre><span></span><code><span class="gp">user@login05 $ </span>scp -r net_id@learn.chtc.wisc.edu:htc-1.3 .
 </code></pre></div>
 
 <p>Using this information, try this:
