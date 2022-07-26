@@ -1294,7 +1294,7 @@ originally placed.</p>
 <p>We will be using the command <code>stashcp</code> to copy files from Stash to the execute hosts.  It has a <code>cp</code> like syntax.</p>
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Make sure you're logged in to <code>login04.osgconnect.net</code></li>
+<li>Make sure you're logged in to <code>login05.osgconnect.net</code></li>
 <li>Copy the following files from the previous <a href="../part2-ex1-blast-proxy">Exercise 2.1</a> to a new directory in <code>/home/&lt;username&gt;</code> called <code>stash-shared</code>:<ul>
 <li><code>blast_wrapper.sh</code></li>
 <li><code>blastx</code></li>
@@ -1321,11 +1321,11 @@ For your own work in the future, make sure that you never put any sensitive data
 <div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>ls /public/&lt;USERNAME&gt;
 </code></pre></div>
 
-<p>Now, test a copy of the file from StashCache into your <code>/home</code> directory on <code>login04.osgconnect.net</code>:</p>
+<p>Now, test a copy of the file from StashCache into your <code>/home</code> directory on <code>login05.osgconnect.net</code>:</p>
 <div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>stashcp /osgconnect/public/&lt;USERNAME&gt;/pdbaa_files.tar.gz ./
 </code></pre></div>
 
-<p>Replacing all instances of <code>&lt;USERNAME&gt;</code> with your username on <code>login04.osgconnect.net</code>.
+<p>Replacing all instances of <code>&lt;USERNAME&gt;</code> with your username on <code>login05.osgconnect.net</code>.
 You should now see the <code>pdbaa_files.tar.gz</code> file in your current directory.
 Notice that we had to include the <strong><code>/osgconnect/public</code></strong> and your username in the file path for <code>stashcp</code>, which make sure you're
 copying from <strong>your</strong> <code>public</code> space.</p>
@@ -1359,7 +1359,7 @@ However, after it has been running for ~2 minutes, you're safe to continue to th
 <h2 id="note-keeping-stash-clean">Note: Keeping Stash 'Clean'<a class="headerlink" href="#note-keeping-stash-clean" title="Permanent link">&para;</a></h2>
 <p>Just as for data on a web proxy, it is VERY important to remove old files from Stash when you no longer need them,
 especially so that you'll have plenty of space for such files in the future.
-For example, you would delete (<code>rm</code>) files from <code>public</code> on <code>login04.osgconnect.net</code> when you don't need them there
+For example, you would delete (<code>rm</code>) files from <code>public</code> on <code>login05.osgconnect.net</code> when you don't need them there
 anymore, but only after all jobs have finished.
 The next time you use Stash after the school, remember to first check for old files that you can delete.</p>
 <h2 id="next-exercise">Next exercise<a class="headerlink" href="#next-exercise" title="Permanent link">&para;</a></h2>

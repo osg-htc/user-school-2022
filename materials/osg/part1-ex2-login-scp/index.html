@@ -1393,7 +1393,7 @@ compression is between <code>best</code> and <code>fast</code>).</p>
 <h2 id="part-2-on-the-open-science-pool-access-point">Part 2: On the Open Science Pool Access Point<a class="headerlink" href="#part-2-on-the-open-science-pool-access-point" title="Permanent link">&para;</a></h2>
 <p>For many of the remaining exercises, you will be using an OSG Connect Access Point,
 which submits jobs into the Open Science Pool.
-For the School, the default server is named <code>login04.osgconnect.net</code>;
+For the School, the default server is named <code>login05.osgconnect.net</code>;
 however, if you had an OSG Connect account from before the School (you know who you are),
 you <em>may</em> be using <code>login05.osgconnect.net</code>, so just change the examples as needed.</p>
 <p>To log in to the OSG Connect Access Point,
@@ -1402,7 +1402,7 @@ If you have any issues logging in to <code>login04</code> (or <code>login05</cod
 please ask for help right away!</p>
 <p>So please <code>ssh</code> in to the server and take a look around:</p>
 <ol>
-<li>Log in using <code>ssh login04.osgconnect.net</code> (or <code>login05</code>, if that’s you)</li>
+<li>Log in using <code>ssh login05.osgconnect.net</code> (or <code>login05</code>, if that’s you)</li>
 <li>Try some Linux and HTCondor commands; for example:<ul>
 <li>Linux commands: <code>hostname</code>, <code>pwd</code>, <code>ls</code>, and so on</li>
 <li>What is the operating system? <code>uname</code> and (in this case) <code>cat /etc/redhat-release</code></li>
@@ -1424,7 +1424,7 @@ Its general form is like this:</p>
 
 <p><code>&lt;remote path&gt;</code> may be omitted if you want to copy your sources to your remote home directory
 and <code>[username@]</code> may be omitted if your usernames are the same across both servers.
-For example, if you are logged in to <code>login04.osgconnect.net</code>
+For example, if you are logged in to <code>login05.osgconnect.net</code>
 and wanted to copy the file <code>foo</code> from your current directory
 to your home directory on <code>learn.chtc.wisc.edu</code>,
 and if your usernames are the same on both servers,
@@ -1432,23 +1432,23 @@ the command would look like this:</p>
 <div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>scp foo learn.chtc.wisc.edu:
 </code></pre></div>
 
-<p>Additionally, you could <em>pull</em> files from <code>learn.chtc.wisc.edu</code> to <code>login04.osgconnect.net</code>.
+<p>Additionally, you could <em>pull</em> files from <code>learn.chtc.wisc.edu</code> to <code>login05.osgconnect.net</code>.
 The following command copies <code>bar</code> from your home directory on <code>learn.chtc.wisc.edu</code>
-to your current directory on <code>login04.osgconnect.net</code>;
+to your current directory on <code>login05.osgconnect.net</code>;
 and in this case, the username (Net ID) for <code>learn</code> is specified:</p>
 <div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>scp net_id@learn.chtc.wisc.edu:bar .
 </code></pre></div>
 
 <p>Also, you can copy folders between servers using the <code>-r</code> option.
 If you kept all your files from the HTCondor exercise 1.3 in a folder named <code>htc-1.3</code> on <code>learn.chtc.wisc.edu</code>,
-you could use the following command to copy them to your home directory on <code>login04.osgconnect.net</code>:</p>
+you could use the following command to copy them to your home directory on <code>login05.osgconnect.net</code>:</p>
 <div class="codehilite"><pre><span></span><code><span class="gp">user@login04 $ </span>scp -r net_id@learn.chtc.wisc.edu:htc-1.3 .
 </code></pre></div>
 
 <p>Using this information, try this:
-From <code>login04.osgconnect.net</code>,
+From <code>login05.osgconnect.net</code>,
 try copying the tarball you created earlier in this exercise on <code>learn.chtc.wisc.edu</code>
-to <code>login04.osgconnect.net</code>.</p>
+to <code>login05.osgconnect.net</code>.</p>
 <h3 id="secure-copy-to-your-laptop">Secure copy to your laptop<a class="headerlink" href="#secure-copy-to-your-laptop" title="Permanent link">&para;</a></h3>
 <p>During your research, you may need to transfer output files
 from your submit server to inspect them on your personal computer,
@@ -1457,12 +1457,12 @@ To use <code>scp</code> on your laptop, follow the instructions relevant to your
 <h4 id="mac-and-linux-users">Mac and Linux users<a class="headerlink" href="#mac-and-linux-users" title="Permanent link">&para;</a></h4>
 <p><code>scp</code> should be included by default and available via the terminal on both Mac and Linux operating systems.
 Open a terminal window on your laptop and
-try copying the tarball containing the OSG exercise 1.1 from <code>login04.osgconnect.net</code> to your laptop.</p>
+try copying the tarball containing the OSG exercise 1.1 from <code>login05.osgconnect.net</code> to your laptop.</p>
 <h4 id="windows-users">Windows users<a class="headerlink" href="#windows-users" title="Permanent link">&para;</a></h4>
 <p>WinSCP is an <code>scp</code> client for Windows operating systems.</p>
 <ol>
 <li>Install WinSCP from <a href="https://winscp.net/eng/index.php">https://winscp.net/eng/index.php</a></li>
-<li>Start WinSCP and enter your SSH credentials for <code>login04.osgconnect.net</code></li>
+<li>Start WinSCP and enter your SSH credentials for <code>login05.osgconnect.net</code></li>
 <li>Copy the tarball containing OSG exercise 1.1 to your laptop</li>
 </ol>
 <h3 id="extra-challenge-using-rsync">Extra challenge: Using rsync<a class="headerlink" href="#extra-challenge-using-rsync" title="Permanent link">&para;</a></h3>
@@ -1486,8 +1486,8 @@ and the ability to only transfer files that have changed.
 Both of these features are helpful when you have network issues
 so that you do not need to restart the transfer from scratch every time your connection fails.</p>
 <ol>
-<li>Log in to <code>login04.osgconnect.net</code></li>
-<li>Use <code>rsync</code> to transfer the folder containing OSG exercise 1.1 on <code>learn.chtc.wisc.edu</code> to <code>login04.osgconnect.net</code></li>
+<li>Log in to <code>login05.osgconnect.net</code></li>
+<li>Use <code>rsync</code> to transfer the folder containing OSG exercise 1.1 on <code>learn.chtc.wisc.edu</code> to <code>login05.osgconnect.net</code></li>
 <li>In a separate terminal window, log in to <code>learn.chtc.wisc.edu</code></li>
 <li>
 <p>Create a new file in your OSG exercise 1.1 folder on <code>learn.chtc.wisc.edu</code> with the <code>touch</code> command:</p>
@@ -1496,7 +1496,7 @@ so that you do not need to restart the transfer from scratch every time your con
 
 </li>
 <li>
-<p>From <code>login04.osgconnect.net</code>,
+<p>From <code>login05.osgconnect.net</code>,
     use the same <code>rsync</code> command to transfer the folder with the new file you just created.
     How many files were transferred the first time?
     How many files were transferred if you run the same rsync command again?</p>
