@@ -16,7 +16,7 @@
     
     
       
-        <title>Part1 ex1 simple dag - OSG User School 2022</title>
+        <title>Exercise 1.1 - OSG User School 2022</title>
       
     
     
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Part1 ex1 simple dag
+              Exercise 1.1
             
           </span>
         </div>
@@ -393,12 +393,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       <label class="md-nav__link" for="__nav_5">
         Materials
@@ -1041,19 +1043,160 @@
             
   
   
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7" type="checkbox" id="__nav_5_7" checked>
+      
+      <label class="md-nav__link" for="__nav_5_7">
+        Workflow Exercises
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Workflow Exercises" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_7">
+          <span class="md-nav__icon md-icon"></span>
+          Workflow Exercises
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Exercise 1.1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Exercise 1.1
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-dagman" class="md-nav__link">
+    What is DAGMan?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submitting-a-simple-dag" class="md-nav__link">
+    Submitting a Simple DAG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenge" class="md-nav__link">
+    Challenge
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part1-ex2-mandelbrot/" class="md-nav__link">
+        Exercise 1.2
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part1-ex3-complex-dag/" class="md-nav__link">
+        Exercise 1.3
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part1-ex4-failed-dag/" class="md-nav__link">
+        Exercise 1.4
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part1-ex5-challenges/" class="md-nav__link">
+        Bonus Exercises 1.5
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
   
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7" type="checkbox" id="__nav_5_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_8" type="checkbox" id="__nav_5_8" >
       
-      <label class="md-nav__link" for="__nav_5_7">
+      <label class="md-nav__link" for="__nav_5_8">
         Checkpointing Exercises
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Checkpointing Exercises" data-md-level="2">
-        <label class="md-nav__title" for="__nav_5_7">
+        <label class="md-nav__title" for="__nav_5_8">
           <span class="md-nav__icon md-icon"></span>
           Checkpointing Exercises
         </label>
@@ -1147,13 +1290,14 @@
 </style>
 
 <h1 id="workflows-exercise-11-coordinating-a-set-of-jobs-with-a-simple-dag">Workflows Exercise 1.1: Coordinating a Set of Jobs With a Simple DAG<a class="headerlink" href="#workflows-exercise-11-coordinating-a-set-of-jobs-with-a-simple-dag" title="Permanent link">&para;</a></h1>
-<p>The objective of this exercise is to learn the very basics of running a set of jobs, where our set is just one job.</p>
+<p>The objective of this exercise is to learn the very basics of running a set of jobs as a single DAG workflow. We'll 
+first show what it looks like to submit a workflow that contains a single job..</p>
 <h2 id="what-is-dagman">What is DAGMan?<a class="headerlink" href="#what-is-dagman" title="Permanent link">&para;</a></h2>
 <p>In short, DAGMan lets you submit complex sequences of jobs as long as they can be expressed as a directed acylic graph.
 For example, you may wish to run a large parameter sweep but before the sweep run you need to prepare your data.  After
 the sweep runs, you need to collate the results.  This might look like this, assuming you want to sweep over five
 parameters:</p>
-<p><img alt="simple DAG" src="../files/osgvsp20-workflows-part1-ex1-simple-dag.gif" /></p>
+<p><img alt="simple DAG" src="../files/osgus22-workflows-part1-ex1-simple-dag.gif" /></p>
 <p>DAGMan has many abilities, such as throttling jobs, recovery from failures, and more.  More information about DAGMan can
 be found at <a href="https://htcondor.readthedocs.io/en/latest/users-manual/dagman-workflows.html">in the HTCondor manual</a>.</p>
 <h2 id="submitting-a-simple-dag">Submitting a Simple DAG<a class="headerlink" href="#submitting-a-simple-dag" title="Permanent link">&para;</a></h2>
@@ -1427,6 +1571,39 @@ you'll submit the job.  In another you will watch the queue, and in the third yo
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../../data/part3-ex2-output/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Bonus Exercise 3.2
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../part1-ex2-mandelbrot/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Exercise 1.2
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
