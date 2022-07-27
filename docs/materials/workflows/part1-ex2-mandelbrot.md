@@ -47,8 +47,8 @@ The Mandelbrot set can take a while to create, particularly if you make the iter
 
         :::console
         username@learn $ goatbrot -i 1000 -o tile_000000_000000.ppm -c -0.75,0.75 -w 1.5 -s 500,500
-        username@learn $ goatbrot -i 1000 -o tile_000000_000001.ppm -c 0.75,0.75 -w 1.5 -s 500,500 
-        username@learn $ goatbrot -i 1000 -o tile_000001_000000.ppm -c -0.75,-0.75 -w 1.5 -s 500,500 
+        username@learn $ goatbrot -i 1000 -o tile_000000_000001.ppm -c 0.75,0.75 -w 1.5 -s 500,500
+        username@learn $ goatbrot -i 1000 -o tile_000001_000000.ppm -c -0.75,-0.75 -w 1.5 -s 500,500
         username@learn $ goatbrot -i 1000 -o tile_000001_000001.ppm -c 0.75,-0.75 -w 1.5 -s 500,500
 
 1.  Stitch the small images together into the complete image (in JPEG format):
@@ -61,16 +61,16 @@ This will produce the same image as above. We divided the image space into a 2×
 View the Image!
 ---------------
 
-Run the commands above so that you have the Mandelbrot image. 
-When you create the image, you might wonder how you can view it. 
+Run the commands above so that you have the Mandelbrot image.
+When you create the image, you might wonder how you can view it.
 If you're comfortable with `scp` or another method, you can copy it back to your computer to view it. Otherwise you can view it in your web browser in three easy steps:
 
 1.  Make your web directory (you only need to do this once):
 
         :::console
         username@learn $ cd ~
-        username@learn $ mkdir public_html 
-        username@learn $ chmod 0711 . 
+        username@learn $ mkdir public_html
+        username@learn $ chmod 0711 .
         username@learn $ chmod 0755 public_html
 
 1.  Copy the image into your web directory (the below command assumes you're back in the directory where you created mandel.jpg):
@@ -78,6 +78,6 @@ If you're comfortable with `scp` or another method, you can copy it back to your
         :::console
         username@learn $ cp mandel.jpg ~/public_html/
 
-1.  Access `http://learn.chtc.wisc.edu/~<USERNAME>/mandel.jpg` in your web browser (change <span style="color:RED">&lt;USERNAME&gt;</span> to your username on `learn.chtc.wisc.edu`, keeping the `~`).
+1.  Access `http://learn.chtc.wisc.edu/~<USERNAME>/mandel.jpg` in your web browser (be sure to use "http://" and change <span style="color:RED">&lt;USERNAME&gt;</span> to your username on `learn.chtc.wisc.edu`, keeping the `~`).
 
 
