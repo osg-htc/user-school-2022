@@ -1397,7 +1397,7 @@ output = $(inputfile).out
 <p>If all of the previous tests have gone okay, you can prepare to run all 100 jobs that will use the split input files.
 To make sure you're not going to generate too much data, use the size of files from the previous test to calculate how
 much total data you're going to add to the <code>blast-split</code> directory for 100 jobs.</p>
-<p>Make sure you remove <code>pdbaa_files.tar.gz</code> from the <code>transfer_input_files</code> in the <em>split</em> submit file.</p>
+<p>Make sure you remove <code>pdbaa_files.tar.gz</code> from the <code>transfer_input_files</code> in the <em>split</em> submit file. Moreover, don't forget to remove the log, error and output file of the previous job.</p>
 <p>Submit all 100 jobs!
 They may take a while to all complete, but it will still be faster than the many hours it would have taken to blast the
 single, large <code>mouse_rna.fa</code> file without splitting it up.
