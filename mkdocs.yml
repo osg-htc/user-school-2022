@@ -92,11 +92,19 @@ nav:
       - Exercise 2.3:               materials/data/part2-ex3-stash-unique.md
       - Bonus Exercise 3.1:         materials/data/part3-ex1-input.md
       - Bonus Exercise 3.2:         materials/data/part3-ex2-output.md
+    - Scaling Exercises:
+      - Exercise 1.1:               materials/scaling/part1-ex1-organization.md
+      - Exercise 1.2:               materials/scaling/part1-ex2-job-attributes.md
+      - Exercise 1.3:               materials/scaling/part1-ex3-log-files.md
     - Workflow Exercises:
       - Exercise 1.1:             materials/workflows/part1-ex1-simple-dag.md
       - Exercise 1.2:             materials/workflows/part1-ex2-mandelbrot.md
       - Exercise 1.3:             materials/workflows/part1-ex3-complex-dag.md
       - Exercise 1.4:             materials/workflows/part1-ex4-failed-dag.md
-      - Bonus Exercises 1.5:      materials/workflows/part1-ex5-challenges.mdi
+      - Bonus Exercises 1.5:      materials/workflows/part1-ex5-challenges.md
+    - Containers/GPU Exercises:
+      - Exercise 1.1:               materials/containers/part1-ex1-building.md
+      - Exercise 1.2:               materials/containers/part1-ex2-running.md
+      - Exercise 1.3:               materials/containers/part1-ex3-gpus.md
     - Checkpointing Exercises:
       - Exercise 1.1:               materials/checkpoint/part1-ex1-checkpointing.md

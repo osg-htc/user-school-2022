@@ -248,10 +248,15 @@ The Union should be open, and so things like ice cream and beer will be availabl
         <td>12:15</td>
         <td colspan="2">
           HTC Showcase, Part 1
-          <br>
-          &#9654; <span style="color: rgb(173, 81, 12);">Ariana Negreiro</span>; UW–Madison, Animal &amp; Dairy Sciences
-          <br>
-          &#9654; <span style="color: rgb(173, 81, 12);">Edgar Spalding</span>; UW–Madison, Botany
+          <div>
+            &#9654; <span style="color: rgb(173, 81, 12);">Ariana Negreiro</span>; UW–Madison, Animal &amp; Dairy Sciences
+            <div style="margin-left: 2ex;">“Leveraging computer vision systems
+            for monitoring animal health and productivity on dairy farms”</div>
+          </div>
+          <div>
+            &#9654; <span style="color: rgb(173, 81, 12);">Edgar Spalding</span>; UW–Madison, Botany
+            <div style="margin-left: 2ex;">“HTC to study the functions of plant genes”</div>
+          </div>
         </td>
     </tr>
     <tr>
