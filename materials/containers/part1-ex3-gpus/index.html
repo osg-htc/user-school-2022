@@ -1250,9 +1250,38 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Exercise 1.3
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Exercise 1.3
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gpu-job" class="md-nav__link">
+    GPU Job
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1327,6 +1356,21 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gpu-job" class="md-nav__link">
+    GPU Job
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1344,7 +1388,80 @@
 </style>
 
 <h1 id="containersgpus-exercise-13-running-a-gpu-job">Containers/GPUs Exercise 1.3: Running a GPU Job<a class="headerlink" href="#containersgpus-exercise-13-running-a-gpu-job" title="Permanent link">&para;</a></h1>
-<p>TBD</p>
+<p>The objective of this exercise is to run a GOU job on OSG.</p>
+<p>GPU software stacks are usually more complex, more difficult to
+build, and more version sensitive than CPU-only jobs. We recommend
+you start with good base images when creating GPU images.</p>
+<p>In this exercise we will use the popular TensorFlow package.
+<a href="https://www.tensorflow.org/">https://www.tensorflow.org/</a> desribes TensorFlow as:</p>
+<blockquote>
+<p>TensorFlow is an open source software library for numerical
+computation using data flow graphs. Nodes in the graph represent
+mathematical operations, while the graph edges represent the
+multidimensional data arrays (tensors) communicated between them. The
+flexible architecture allows you to deploy computation to one or more
+CPUs or GPUs in a desktop, server, or mobile device with a single
+API. TensorFlow was originally developed by researchers and engineers
+working on the Google Brain Team within Google's Machine Intelligence
+research organization for the purposes of conducting machine learning
+and deep neural networks research, but the system is general enough to
+be applicable in a wide variety of other domains as well.</p>
+</blockquote>
+<p>To use TensorFlow, we need a small sample program. We will use a
+sample code from the TensorFlow tutorials. Create a .py file with the
+following content:</p>
+<div class="codehilite"><pre><span></span><code>#!/usr/bin/python3
+
+# http://learningtensorflow.com/lesson10/
+
+import sys
+import numpy as np
+import tensorflow as tf
+from datetime import datetime
+
+tf.debugging.set_log_device_placement(True)
+
+# Create some tensors
+a = tf.constant([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
+b = tf.constant([[1.0, 2.0], [3.0, 4.0], [5.0, 6.0]])
+c = tf.matmul(a, b)
+
+print(c)
+</code></pre></div>
+
+<p>You can run this on the sumbmit node. You can use <code>singularity exec</code>
+to execute the code directly, using the TensorFlow image:</p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$ </span>singularity <span class="nb">exec</span> /cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow-gpu:2.2-cuda-10.1 ./test.py
+</code></pre></div>
+
+<p>There is a lot of output, but somewhere close to end, TensorFlow will
+tell you what hardware it found an (hint: look for "CPU"):</p>
+<div class="codehilite"><pre><span></span><code>...Executing op MatMul in device /job:localhost/replica:0/task:0/device:CPU:0
+</code></pre></div>
+
+<h2 id="gpu-job">GPU Job<a class="headerlink" href="#gpu-job" title="Permanent link">&para;</a></h2>
+<p>Running GPU jobs on OSG is easy! Most of the time, the only additional
+attribute we need to set is <code>request_gpus = 1</code>. GPU jobs still need
+a CPU, so the section in the submit file should look something like:</p>
+<div class="codehilite"><pre><span></span><code>request_cpus = 1
+request_gpus = 1
+request_memory = 2GB
+request_disk = 5GB
+</code></pre></div>
+
+<p>And we need specify the image to use:</p>
+<div class="codehilite"><pre><span></span><code>+SingularityImage = &quot;/cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow-gpu:2.2-cuda-10.1&quot;
+</code></pre></div>
+
+<p>For TensorFlow, we also recommend a few extra requirements due to how
+TensorFlow was built:</p>
+<div class="codehilite"><pre><span></span><code>requirements = HAS_AVX2 == True &amp;&amp; OSG_HOST_KERNEL_VERSION &gt;= 31000
+</code></pre></div>
+
+<p>Create a submit file using these attributes, and try running the job. If
+successful, you should now see it ran on GPU:</p>
+<div class="codehilite"><pre><span></span><code>...Executing op MatMul in device /job:localhost/replica:0/task:0/device:GPU:0
+</code></pre></div>
                 
                   
                 
