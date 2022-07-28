@@ -134,6 +134,17 @@ View the slides
 
 ## Extra Topics
 
+### Workflows with DAGMan
+
+View the slides
+([PDF](workflows/files/osgus22-bonus-dagman.pdf),[PowerPoint](workflows/files/osgus22-bonus-dagman.pptx))
+
+- [Exercise 1.1: Coordinating set of jobs: A simple DAG](workflows/part1-ex1-simple-dag.md)
+- [Exercise 1.2: A brief detour through the Mandelbrot set](workflows/part1-ex2-mandelbrot.md)
+- [Exercise 1.3: A more complex DAG](workflows/part1-ex3-complex-dag.md)
+- [Exercise 1.4: Handling jobs that fail with DAGMan](workflows/part1-ex4-failed-dag.md)
+- [Bonus Exercise 4.5: HTCondor challenges](workflows/part1-ex5-challenges.md)
+
 ### Containers and GPUs
 
 View the slides
@@ -143,18 +154,6 @@ View the slides
 - [Exercise 1.1: Building a Singularity Container](containers/part1-ex1-building.md)
 - [Exercise 1.2: Using Containers in Jobs](containers/part1-ex2-running.md)
 - [Exercise 1.3: Running a GPU job](containers/part1-ex3-gpus.md)
-
-### Workflows with DAGMan
-
-View the **DRAFT** slides
-([PDF](workflows/files/osgus22-bonus-dagman.pdf),[PowerPoint](workflows/files/osgus22-bonus-dagman.pptx))
-
-- [Exercise 1.1: Coordinating set of jobs: A simple DAG](workflows/part1-ex1-simple-dag.md)
-- [Exercise 1.2: A brief detour through the Mandelbrot set](workflows/part1-ex2-mandelbrot.md)
-- [Exercise 1.3: A more complex DAG](workflows/part1-ex3-complex-dag.md)
-- [Exercise 1.4: Handling jobs that fail with DAGMan](workflows/part1-ex4-failed-dag.md)
-- [Bonus Exercise 4.5: HTCondor challenges](workflows/part1-ex5-challenges.md)
-
 
 ### Self-checkpointing for long-running jobs
 
