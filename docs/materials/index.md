@@ -125,7 +125,8 @@ View the slides
 
 ## Scaling Up
 
-(Slides will be posted here.)
+View the slides
+([PDF](scaling/files/osgus22-scaling.pdf))
 
 ### Scaling Up Exercises
 
