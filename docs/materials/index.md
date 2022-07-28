@@ -144,8 +144,6 @@ View the slides
 - [Exercise 1.2: Using Containers in Jobs](containers/part1-ex2-running.md)
 - [Exercise 1.3: Running a GPU job](containers/part1-ex3-gpus.md)
 
-<!-- BEGIN EXTRA TOPICS THAT ARE NOT READY YET
-
 ### Workflows with DAGMan
 
 View the **DRAFT** slides
