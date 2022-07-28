@@ -1421,105 +1421,96 @@
 <p>The <code>grep</code> command displays lines from a file matching a given pattern, where the pattern is the first argument provided to <code>grep</code>. For example <code>grep '@' address_book.txt</code> would print out all lines containing the <code>@</code> character in the file named <code>address_book.txt</code>. While working through this exercise, consider keeping one of your job log files open in a separate window to see if you can figure out how we came up with the patterns presented in this exercise.</p>
 <h2 id="job-terminations">Job terminations<a class="headerlink" href="#job-terminations" title="Permanent link">&para;</a></h2>
 <p>Lines for job termination events in the job log always start with <code>005</code> and contain the timestamp of when the job(s) ended. Use the following <code>grep</code> command to get a list of when jobs ended in your log files:</p>
-<div class="codehilite"><pre><span></span><code>    :::console
-    $ grep &#39;^005&#39; my-job.log
+<div class="codehilite"><pre><span></span><code><span class="gp">$ </span>grep <span class="s1">&#39;^005&#39;</span> my-job.log
 </code></pre></div>
 
 <p><em>Optional challenge</em>: What is the importance of <code>^</code> in the pattern (<code>^005</code>) provided above?</p>
 <p>Recall that executables typically exit with code <code>0</code> when they exit normally, which often (but not always!) means that they exited successfully. Lines containing jobs' exit codes (i.e. return values) all contain the word <code>termination</code>. Use <code>grep</code> to get a list of jobs' exit codes:</p>
-<div class="codehilite"><pre><span></span><code>    :::console
-    $ grep termination my-job.log
+<div class="codehilite"><pre><span></span><code><span class="gp">$ </span>grep termination my-job.log
 </code></pre></div>
 
 <p>By "piping" the output of the previous command through the <code>sort</code> and then <code>uniq</code> commands, we can get a count of each exit code:</p>
-<div class="codehilite"><pre><span></span><code>    :::console
-    $ grep termination my-job.log | sort | uniq -c
+<div class="codehilite"><pre><span></span><code><span class="gp">$ </span>grep termination my-job.log <span class="p">|</span> sort <span class="p">|</span> uniq -c
 </code></pre></div>
 
 <p>Here's an example of the output from the previous commands when run on a log file written to from eight jobs. Six jobs exited with exit code <code>0</code>, while two exited <code>1</code>:</p>
-<div class="codehilite"><pre><span></span><code>    :::console
-    [username@learn]$ grep &#39;^005&#39; my-job.log
-    005 (236881.000.000) 2022-07-27 15:07:38 Job terminated.
-    005 (236883.000.000) 2022-07-27 15:07:42 Job terminated.
-    005 (236882.000.000) 2022-07-27 15:08:01 Job terminated.
-    005 (236880.000.000) 2022-07-27 15:08:07 Job terminated.
-    005 (236891.000.000) 2022-07-27 15:13:31 Job terminated.
-    005 (236893.000.000) 2022-07-27 15:13:32 Job terminated.
-    005 (236892.000.000) 2022-07-27 15:13:58 Job terminated.
-    005 (236890.000.000) 2022-07-27 15:13:59 Job terminated.
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@learn]$ </span>grep <span class="s1">&#39;^005&#39;</span> my-job.log
+<span class="go">005 (236881.000.000) 2022-07-27 15:07:38 Job terminated.</span>
+<span class="go">005 (236883.000.000) 2022-07-27 15:07:42 Job terminated.</span>
+<span class="go">005 (236882.000.000) 2022-07-27 15:08:01 Job terminated.</span>
+<span class="go">005 (236880.000.000) 2022-07-27 15:08:07 Job terminated.</span>
+<span class="go">005 (236891.000.000) 2022-07-27 15:13:31 Job terminated.</span>
+<span class="go">005 (236893.000.000) 2022-07-27 15:13:32 Job terminated.</span>
+<span class="go">005 (236892.000.000) 2022-07-27 15:13:58 Job terminated.</span>
+<span class="go">005 (236890.000.000) 2022-07-27 15:13:59 Job terminated.</span>
 
-    [username@learn]$ grep &#39;termination&#39; my-job.log
-    (1) Normal termination (return value 0)
-    (1) Normal termination (return value 1)
-    (1) Normal termination (return value 0)
-    (1) Normal termination (return value 0)
-    (1) Normal termination (return value 1)
-    (1) Normal termination (return value 0)
-    (1) Normal termination (return value 0)
-    (1) Normal termination (return value 0)
+<span class="gp">[username@learn]$ </span>grep <span class="s1">&#39;termination&#39;</span> my-job.log
+<span class="gp gp-VirtualEnv">(1)</span> <span class="go">Normal termination (return value 0)</span>
+<span class="gp gp-VirtualEnv">(1)</span> <span class="go">Normal termination (return value 1)</span>
+<span class="gp gp-VirtualEnv">(1)</span> <span class="go">Normal termination (return value 0)</span>
+<span class="gp gp-VirtualEnv">(1)</span> <span class="go">Normal termination (return value 0)</span>
+<span class="gp gp-VirtualEnv">(1)</span> <span class="go">Normal termination (return value 1)</span>
+<span class="gp gp-VirtualEnv">(1)</span> <span class="go">Normal termination (return value 0)</span>
+<span class="gp gp-VirtualEnv">(1)</span> <span class="go">Normal termination (return value 0)</span>
+<span class="gp gp-VirtualEnv">(1)</span> <span class="go">Normal termination (return value 0)</span>
 
-    [username@learn]$ grep &#39;termination&#39; my-job.log | sort | uniq -c
-    6   (1) Normal termination (return value 0)
-    2   (1) Normal termination (return value 1)
+<span class="gp">[username@learn]$ </span>grep <span class="s1">&#39;termination&#39;</span> my-job.log <span class="p">|</span> sort <span class="p">|</span> uniq -c
+<span class="go">6   (1) Normal termination (return value 0)</span>
+<span class="go">2   (1) Normal termination (return value 1)</span>
 </code></pre></div>
 
 <h2 id="job-resource-usage">Job resource usage<a class="headerlink" href="#job-resource-usage" title="Permanent link">&para;</a></h2>
 <p>Jobs' resource usages (and requests and allocations) are logged in the following format:</p>
-<div class="codehilite"><pre><span></span><code>    :::file
-    Partitionable Resources :    Usage  Request Allocated
-       Cpus                 :                 1         1
-       Disk (KB)            :    10382  1048576   1468671
-       Memory (MB)          :      692     1024      1024
+<div class="codehilite"><pre><span></span><code>Partitionable Resources :    Usage  Request Allocated
+    Cpus                 :                 1         1
+    Disk (KB)            :    10382  1048576   1468671
+    Memory (MB)          :      692     1024      1024
 </code></pre></div>
 
 <p>Run the following <code>grep</code> command to pull out the memory information from your job logs:</p>
-<div class="codehilite"><pre><span></span><code>    :::console
-    $ grep &#39;Memory (MB) *:&#39; my-job.log
+<div class="codehilite"><pre><span></span><code><span class="gp">$ </span>grep <span class="s1">&#39;Memory (MB) *:&#39;</span> my-job.log
 </code></pre></div>
 
 <p>Look back at the format in the example above. Columns after the <code>:</code> will first show memory usage, then memory requested, and then the memory allocated to your job.</p>
 <p>Similarly, use the following command to get the disk information from your job logs:</p>
-<div class="codehilite"><pre><span></span><code>    :::console
-    $ grep &#39;Disk (KB) *:&#39; my-job.log
+<div class="codehilite"><pre><span></span><code><span class="gp">$ </span>grep <span class="s1">&#39;Disk (KB) *:&#39;</span> my-job.log
 </code></pre></div>
 
 <p>Here's some example output from running the memory <code>grep</code> command on the same eight-job log file:</p>
-<div class="codehilite"><pre><span></span><code>    :::console
-    [username@learn]$ grep &#39;Memory (MB) *:&#39; my-job.log
-    Memory (MB)          :      692     1024      1024 
-    Memory (MB)          :      714     1024      1024 
-    Memory (MB)          :      703     1024      1024 
-    Memory (MB)          :      699     1024      1024 
-    Memory (MB)          :      705     1024      1024 
-    Memory (MB)          :      704     1024      1024 
-    Memory (MB)          :      711     1024      1024 
-    Memory (MB)          :      697     1024      1024
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@learn]$ </span>grep <span class="s1">&#39;Memory (MB) *:&#39;</span> my-job.log
+<span class="go">Memory (MB)          :      692     1024      1024 </span>
+<span class="go">Memory (MB)          :      714     1024      1024 </span>
+<span class="go">Memory (MB)          :      703     1024      1024 </span>
+<span class="go">Memory (MB)          :      699     1024      1024 </span>
+<span class="go">Memory (MB)          :      705     1024      1024 </span>
+<span class="go">Memory (MB)          :      704     1024      1024 </span>
+<span class="go">Memory (MB)          :      711     1024      1024 </span>
+<span class="go">Memory (MB)          :      697     1024      1024 </span>
 </code></pre></div>
 
 <p>In this example, the memory usage for the jobs ranged from 692 to 714 MB, and they all requested (and were allocated) 1 GB of memory.</p>
 <p><strong>Challenge</strong>: Put your memory and/or disk information from your jobs into a spreadsheet and calculate the average resource usage of your jobs.</p>
 <h2 id="other-job-information">Other job information<a class="headerlink" href="#other-job-information" title="Permanent link">&para;</a></h2>
 <p>Without looking at the lecture materials, see if you can come up with <code>grep</code> commands to gather the number of bytes sent and received by jobs (i.e. how much data was transferred to/from the access point). Here is some example output for comparison:</p>
-<div class="codehilite"><pre><span></span><code>    :::console
-    [username@learn]$ grep &#39;&lt;PATTERN REMOVED&gt;&#39; my-job.log
-    760393  -  Total Bytes Sent By Job
-    760395  -  Total Bytes Sent By Job
-    760397  -  Total Bytes Sent By Job
-    760395  -  Total Bytes Sent By Job
-    760393  -  Total Bytes Sent By Job
-    760395  -  Total Bytes Sent By Job
-    760397  -  Total Bytes Sent By Job
-    760395  -  Total Bytes Sent By Job
+<div class="codehilite"><pre><span></span><code><span class="gp">[username@learn]$ </span>grep <span class="s1">&#39;&lt;PATTERN REMOVED&gt;&#39;</span> my-job.log
+<span class="go">760393  -  Total Bytes Sent By Job</span>
+<span class="go">760395  -  Total Bytes Sent By Job</span>
+<span class="go">760397  -  Total Bytes Sent By Job</span>
+<span class="go">760395  -  Total Bytes Sent By Job</span>
+<span class="go">760393  -  Total Bytes Sent By Job</span>
+<span class="go">760395  -  Total Bytes Sent By Job</span>
+<span class="go">760397  -  Total Bytes Sent By Job</span>
+<span class="go">760395  -  Total Bytes Sent By Job</span>
 
-    [username@learn]$ grep &#39;&lt;PATTERN REMOVED&gt;&#39; my-job.log
-    19240  -  Total Bytes Received By Job
-    19240  -  Total Bytes Received By Job
-    19240  -  Total Bytes Received By Job
-    19240  -  Total Bytes Received By Job
-    19240  -  Total Bytes Received By Job
-    19240  -  Total Bytes Received By Job
-    19240  -  Total Bytes Received By Job
-    19240  -  Total Bytes Received By Job
+<span class="gp">[username@learn]$ </span>grep <span class="s1">&#39;&lt;PATTERN REMOVED&gt;&#39;</span> my-job.log
+<span class="go">19240  -  Total Bytes Received By Job</span>
+<span class="go">19240  -  Total Bytes Received By Job</span>
+<span class="go">19240  -  Total Bytes Received By Job</span>
+<span class="go">19240  -  Total Bytes Received By Job</span>
+<span class="go">19240  -  Total Bytes Received By Job</span>
+<span class="go">19240  -  Total Bytes Received By Job</span>
+<span class="go">19240  -  Total Bytes Received By Job</span>
+<span class="go">19240  -  Total Bytes Received By Job</span>
 </code></pre></div>
 
 <p>Job log files may also contain additional information about held jobs or interrupted jobs. If you feel that your jobs are bouncing from idle to running and back to idle, or that they are otherwise not making as much progress as you expect, the log files are a good place to check. Though they might eventually become impossibly large to read line-by-line once you start scaling up, using <code>grep</code> to pull out specific lines and using <code>sort</code> and <code>uniq</code> to reduce the output can help you make sense of the information contained in the logs.</p>
