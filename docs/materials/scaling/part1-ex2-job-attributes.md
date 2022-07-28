@@ -1,82 +1,113 @@
-Exercise 1.2: Investigating Job Class Ad
-==================================================
+# Exercise 1.2: Investigating Job Attributes
 
-The objective of this exercise is to make user made aware of the 'Job Class Ad' that is available on HTCondor. When a job is submitted to HTCondor a set of 'Job Class Ad' gets added to the job. The 'Job Class Ad' stores information about various aspects of the job e.g.- which machine is running your job, current memory,disk usage of the job etc. 
+The objective of this exercise is to your awareness of job class ad attributes,
+especially ones that may help you look for issues with your jobs in the OSPool.
 
-Setup
------
+Recall that a job class ad contains attributes and their values that describe what HTCondor knows about the job.
+OSPool jobs contain extra attributes that are specific to that pool.
+Thus, an OSPool job class ad may have well over 150 attributes.
 
-Before we start please make sure that you are logged into your login node- `login05.osgconnect.net`
-The shell script that we will be using follows. Copy that and save it as `simple.sh`. 
+Some OSPool job attributes are especially helpful when you are scaling up jobs
+and want to see if jobs are running as expected or are maybe doing surprising things that are worth extra attention.
 
-```file
-#!/bin/bash
+## Preparing exercise files
 
-SLEEPTIME=$1
+Because this exercise focuses on OSPool job attributes, please use your OSG Connect account
+on `login04.osgconnect.net` or `login05.osgconnect.net`.
 
-hostname
-pwd
-whoami
+1.  Create a shell script for testing called `simple.sh`:
 
-for i in {1..5}
-do 
- echo "performing iteration $i"
- sleep $SLEEPTIME
-done
-```
-We have created a basic job submission that submits the file.
-```file 
-universe = vanilla
-log = logs/$(Cluster)_$(Process).log
-error = logs/$(Cluster)_$(Process).err
-output = $(Cluster)_$(Process).out
+        :::file
+        #!/bin/bash
 
-executable = simple.sh
+        SLEEPTIME=$1
 
-should_transfer_files = YES
-when_to_transfer_output = ON_EXIT
+        hostname
+        pwd
+        whoami
 
-request_cpus = 1
-request_memory = 1GB
-request_disk = 1GB
+        for i in {1..5}
+        do 
+         echo "performing iteration $i"
+         sleep $SLEEPTIME
+        done
 
-# set arguments, queue a normal job
-arguments = 600
-queue 1
+1.  Create an HTCondor submit file that queues three jobs:
 
-# queue a job that will go on hold
-transfer_input_files = test.txt
-queue 1
+        :::file 
+        universe = vanilla
+        log = logs/$(Cluster)_$(Process).log
+        error = logs/$(Cluster)_$(Process).err
+        output = $(Cluster)_$(Process).out
 
-# queue a job that will never start
-request_memory = 40TB
-queue 1
-```
+        executable = simple.sh
 
-Save the submit file and submit the jobs using `condor_submit`. When the job starts running, try using following command.
+        should_transfer_files = YES
+        when_to_transfer_output = ON_EXIT
 
-```condor_q -l <JobId>```
+        request_cpus = 1
+        request_memory = 1GB
+        request_disk = 1GB
 
-Replace the `<JobId>` with your job's JobId. What do you see? You should see a list of data printed out in your screen. These are the `Job Class Ads`. 
-Details of all the different attribute can be found in the [HTcondor Manual](https://htcondor.readthedocs.io/en/latest/classad-attributes/job-classad-attributes.html) 
+        # set arguments, queue a normal job
+        arguments = 600
+        queue 1
 
-The list has many information about your jobs. We can look at some of the specific `Job Class Ad` using the `-af` option.
-Some of the most useful Job Class Ad that we can look at are 
-`LastRemoteHost`,`MATCH_EXP_JOBGLIDEIN_ResourceName`,`exitcode`, `holdreasoncode`, `NumJobStarts`, `MemoryUsage`, 
-`NumHoldsByReason`, `NumJobStarts`,`MachineAttrGLIDEIN_ResourceNameN`
+        # queue a job that will go on hold
+        transfer_input_files = test.txt
+        queue 1
 
-Point to be noted that the `MachineAttrGLIDEIN_ResourceNameN` itself is not a `Job Class Ad` that you can ask HTCondor to return. This `N` represent an integer eg. `MachineAttrGLIDEIN_ResourceName0`
+        # queue a job that will never start
+        request_memory = 40TB
+        queue 1
 
-You can look at some of the `Job Class Ad` using `condor_q <JobId> -af <jobclassad>`. Replace the `<JobId>` with your job's Id and the `<jobclassad>` with your desired `Job Class Ad`.
-Remember, you can use many `Job Class Ad` in your command and the same command can be used in the case of `condor_history` as well.
+## Exploring OSPool job class ad attributes
 
-* `LastRemoteHost` contains the information/host name where your jobs ran the latest 
-* `MATCH_EXP_JOBGLIDEIN_ResourceName` contains the information which machine ran your jobs, 
-* `exitcode` can be used to get an idea about whether your job ran successfully or not. For most of the cases an **exitcode=0** means that your job ran successfully. 
-* `holdreasoncode` contains the code of different reasons for which your jobs may go on hold. The details of the code can be found [here](https://htcondor.readthedocs.io/en/latest/classad-attributes/job-classad-attributes.html?highlight=HoldReasonCode#job-classad-attributes)
-* `MemoryUsage` shows the current memory used by your job.
-* `NumHoldsByReason` The value of this attribute is a (nested) classad containing a count of how many times a job has been placed on hold grouped by the reason the job went on hold
-* `NumJobStarts` contain the information about how many time the job started. if the value is 1 that means the job ran only on one site.
-* `MachineAttrGLIDEIN_ResourceNameN` indicates the name of the machine where the job ran. The integer value of **N** represent the execution attempt number. 0 is the recent execution and the highest integer value is the oldest execution attempt.
+For this exercise, you will submit the three jobs defined in the submit file above,
+then examine their job class ad attributes.
 
-You can look for these `Job Class Ad` in the jobs in `condor_history` too.
+Here are some attributes that may be interesting:
+
+*   `CpusProvisioned` is the number of CPUs given to your job for the current or most recent run
+*   `ResidentSetSize_RAW` is the maximum amount of memory that HTCondor has noticed your job using (in KB)
+*   `DiskUsage_RAW` is the maximum amount of disk that HTCondor has noticed your job using (in MB)
+*   `NumJobStarts` is the number of times HTCondor has started your job; `1` is typical for a running job, and higher counts may indicate issues running the job
+*   `LastRemoteHost` identifies the name for the slot where your job is running or most recently ran
+*   `MachineAttrGLIDEIN_ResourceName*N*` is a set of numbered attributes that identify the most recent sites where your job ran; *N* is `0` for the most recent (or current) run, `1` for the previous run, and so on up to `9`
+*   `ExitCode` exists only if your job exited (completed) at least once; a value of `0` typically means success
+*   `HoldReasonCode` exists only if your job went on hold; if so, it is a number corresponding to the main hold reason
+    (see [here](https://htcondor.readthedocs.io/en/latest/classad-attributes/job-classad-attributes.html?highlight=HoldReasonCode#job-classad-attributes) for details)
+*   `NumHoldsByReason` is a list of all of the main reasons your job has gone on hold so far with counts of each hold type
+
+Let&rsquo;s explore these attributes on real jobs.
+
+1.  Submit the jobs (above) and note the cluster ID
+
+1.  When one job from the cluster is running, view all of its job class ad attributes:
+
+        :::console
+        $ condor_q -l <JobId>
+
+    where `<JobId>` is your job's ID.
+
+    This command lists all of the job&rsquo;s class ad attributes.
+    Details of some of the attributes are in the
+    [HTcondor Manual](https://htcondor.readthedocs.io/en/latest/classad-attributes/job-classad-attributes.html).
+    Others are defined (and not well documented) only for the OSPool.
+    Can you find any of the attributes listed above?
+
+1.  Next, use `condor_q -af <AttributeName>` to examine one attribute at a time for several jobs:
+
+        :::console
+        $ condor_q -af NumJobStarts <ClusterID>
+
+    where `<ClusterID>` is the HTCondor cluster ID noted above.
+
+    What does the output tell you?
+
+1.  Finally, display several attributes at once for the jobs:
+
+        :::console
+        $ condor_q -af ClusterID ProcID NumJobStarts DiskUsage_RAW LastRemoteHost HoldReasonCode <ClusterID>
+
+    Why do some values appear as `undefined`?
