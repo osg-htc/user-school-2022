@@ -113,15 +113,14 @@ Submit your DAG:
 ``` console
 username@learn $ condor_submit_dag goatbrot.dag
 -----------------------------------------------------------------------
-File for submitting this DAG to Condor           : goatbrot.dag.condor.sub
+File for submitting this DAG to HTCondor           : goatbrot.dag.condor.sub
 Log of DAGMan debugging messages                 : goatbrot.dag.dagman.out
-Log of Condor library output                     : goatbrot.dag.lib.out
-Log of Condor library error messages             : goatbrot.dag.lib.err
+Log of HTCondor library output                     : goatbrot.dag.lib.out
+Log of HTCondor library error messages             : goatbrot.dag.lib.err
 Log of the life of condor_dagman itself          : goatbrot.dag.dagman.log
 
 Submitting job(s).
-1 job(s) submitted to cluster 71.
-
+1 job(s) submitted to cluster 236879.
 -----------------------------------------------------------------------
 ```
 
@@ -133,68 +132,68 @@ Let’s follow the progress of the whole DAG:
 1.  Use the `condor_watch_q` command to keep an eye on the running jobs. See more information about this tool [here](https://htcondor.readthedocs.io/en/latest/man-pages/condor_watch_q.html).
 
         :::console
-        username@learn $ condor_watch_q 
+        username@learn $ condor_watch_q
 
-    <span style="color:RED">**If you're quick enough, you may have seen DAGMan running as the lone job, before it submitted additional job nodes:**</span> 
+    <span style="color:RED">**If you're quick enough, you may have seen DAGMan running as the lone job, before it submitted additional job nodes:**</span>
 
         :::console
         BATCH                IDLE  RUN  DONE  TOTAL  JOB_IDS
-        goatbrot.dag+222059     -    1     -      1  222059.0
+        goatbrot.dag+236879     -    1     -      1  236879.0
 
         [=============================================================================]
 
         Total: 1 jobs; 1 running
 
-        Updated at 2021-07-28 13:52:57
+        Updated at 2022-07-27 15:06:52
 
     <span style="color:RED">**DAGMan has submitted the goatbrot jobs, but they haven't started running yet**</span>
-    
+
         :::console
         BATCH                IDLE  RUN  DONE  TOTAL  JOB_IDS
-        goatbrot.dag+222059     4    1     -      5  222059.0 ... 222063.0
+        goatbrot.dag+236879     4    1     -      5  236879.0 ... 236883.0
 
         [===============--------------------------------------------------------------]
 
         Total: 5 jobs; 4 idle, 1 running
 
-        Updated at 2021-07-28 13:53:53
+        Updated at 2022-07-27 15:07:45
 
 
-    <span style="color:RED">**They're running**</span> 
+    <span style="color:RED">**They're running**</span>
 
         :::console
         BATCH                IDLE  RUN  DONE  TOTAL  JOB_IDS
-        goatbrot.dag+222059     -    5     -      5  222059.0 ... 222063.0
+        goatbrot.dag+236879     -    5     -      5  236879.0 ... 236883.0
         [=============================================================================]
 
         Total: 5 jobs; 5 running
 
-        Updated at 2021-07-28 13:54:33
+        Updated at 2022-07-27 15:08:48
 
     <span style="color:RED">**They finished, but DAGMan hasn't noticed yet. It only checks periodically:**</span>
 
         :::console
         BATCH                IDLE  RUN  DONE  TOTAL  JOB_IDS
-        goatbrot.dag+222059     -    1    4     -      5  222059.0 ... 222063.0
+        goatbrot.dag+236879     -    1    4     -      5  236879.0 ... 236883.0
 
         [##############################################################===============]
 
         Total: 5 jobs; 4 completed, 1 running
 
-        Updated at 2021-07-28 13:55:13
+        Updated at 2022-07-27 15:09:54
 
     Eventually, you'll see the montage job submitted, then running, then leave the queue, and then DAGMan will leave the queue.
 
 1.  Examine your results. For some reason, goatbrot prints everything to stderr, not stdout.
 
         :::console
-        username@learn $ cat goatbrot.err.0.0 
+        username@learn $ cat goatbrot.err.0.0
         Complex image: Center: -0.75 + 0.75i Width: 1.5 Height: 1.5 Upper Left: -1.5 + 1.5i Lower Right: 0 + 0i
-         
+
         Output image: Filename: tile_0_0.ppm Width, Height: 500, 500 Theme: beej Antialiased: no
-        
+
         Mandelbrot: Max Iterations: 100000 Continuous: no
-         
+
         Goatbrot: Multithreading: not supported in this build
 
         Completed: 100.0%
