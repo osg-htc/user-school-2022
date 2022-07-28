@@ -16,7 +16,7 @@
     
     
       
-        <title>Part1 ex2 job attributes - OSG User School 2022</title>
+        <title>Exercise 1.2: Investigating Job Attributes - OSG User School 2022</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#exercise-12-investigating-job-class-ad" class="md-skip">
+        <a href="#exercise-12-investigating-job-attributes" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Part1 ex2 job attributes
+              Exercise 1.2: Investigating Job Attributes
             
           </span>
         </div>
@@ -1234,8 +1234,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    Setup
+  <a href="#preparing-exercise-files" class="md-nav__link">
+    Preparing exercise files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exploring-ospool-job-class-ad-attributes" class="md-nav__link">
+    Exploring OSPool job class ad attributes
   </a>
   
 </li>
@@ -1253,11 +1260,20 @@
               
                 
                 
-                <h1 id="exercise-12-investigating-job-class-ad">Exercise 1.2: Investigating Job Class Ad<a class="headerlink" href="#exercise-12-investigating-job-class-ad" title="Permanent link">&para;</a></h1>
-<p>The objective of this exercise is to make user made aware of the 'Job Class Ad' that is available on HTCondor. When a job is submitted to HTCondor a set of 'Job Class Ad' gets added to the job. The 'Job Class Ad' stores information about various aspects of the job e.g.- which machine is running your job, current memory,disk usage of the job etc. </p>
-<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
-<p>Before we start please make sure that you are logged into your login node- <code>login05.osgconnect.net</code>
-The shell script that we will be using follows. Copy that and save it as <code>simple.sh</code>. </p>
+                <h1 id="exercise-12-investigating-job-attributes">Exercise 1.2: Investigating Job Attributes<a class="headerlink" href="#exercise-12-investigating-job-attributes" title="Permanent link">&para;</a></h1>
+<p>The objective of this exercise is to your awareness of job class ad attributes,
+especially ones that may help you look for issues with your jobs in the OSPool.</p>
+<p>Recall that a job class ad contains attributes and their values that describe what HTCondor knows about the job.
+OSPool jobs contain extra attributes that are specific to that pool.
+Thus, an OSPool job class ad may have well over 150 attributes.</p>
+<p>Some OSPool job attributes are especially helpful when you are scaling up jobs
+and want to see if jobs are running as expected or are maybe doing surprising things that are worth extra attention.</p>
+<h2 id="preparing-exercise-files">Preparing exercise files<a class="headerlink" href="#preparing-exercise-files" title="Permanent link">&para;</a></h2>
+<p>Because this exercise focuses on OSPool job attributes, please use your OSG Connect account
+on <code>login04.osgconnect.net</code> or <code>login05.osgconnect.net</code>.</p>
+<ol>
+<li>
+<p>Create a shell script for testing called <code>simple.sh</code>:</p>
 <div class="codehilite"><pre><span></span><code>#!/bin/bash
 
 SLEEPTIME=$1
@@ -1273,7 +1289,9 @@ do
 done
 </code></pre></div>
 
-<p>We have created a basic job submission that submits the file.</p>
+</li>
+<li>
+<p>Create an HTCondor submit file that queues three jobs:</p>
 <div class="codehilite"><pre><span></span><code>universe = vanilla
 log = logs/$(Cluster)_$(Process).log
 error = logs/$(Cluster)_$(Process).err
@@ -1301,28 +1319,57 @@ request_memory = 40TB
 queue 1
 </code></pre></div>
 
-<p>Save the submit file and submit the jobs using <code>condor_submit</code>. When the job starts running, try using following command.</p>
-<p><code>condor_q -l &lt;JobId&gt;</code></p>
-<p>Replace the <code>&lt;JobId&gt;</code> with your job's JobId. What do you see? You should see a list of data printed out in your screen. These are the <code>Job Class Ads</code>. 
-Details of all the different attribute can be found in the <a href="https://htcondor.readthedocs.io/en/latest/classad-attributes/job-classad-attributes.html">HTcondor Manual</a> </p>
-<p>The list has many information about your jobs. We can look at some of the specific <code>Job Class Ad</code> using the <code>-af</code> option.
-Some of the most useful Job Class Ad that we can look at are 
-<code>LastRemoteHost</code>,<code>MATCH_EXP_JOBGLIDEIN_ResourceName</code>,<code>exitcode</code>, <code>holdreasoncode</code>, <code>NumJobStarts</code>, <code>MemoryUsage</code>, 
-<code>NumHoldsByReason</code>, <code>NumJobStarts</code>,<code>MachineAttrGLIDEIN_ResourceNameN</code></p>
-<p>Point to be noted that the <code>MachineAttrGLIDEIN_ResourceNameN</code> itself is not a <code>Job Class Ad</code> that you can ask HTCondor to return. This <code>N</code> represent an integer eg. <code>MachineAttrGLIDEIN_ResourceName0</code></p>
-<p>You can look at some of the <code>Job Class Ad</code> using <code>condor_q &lt;JobId&gt; -af &lt;jobclassad&gt;</code>. Replace the <code>&lt;JobId&gt;</code> with your job's Id and the <code>&lt;jobclassad&gt;</code> with your desired <code>Job Class Ad</code>.
-Remember, you can use many <code>Job Class Ad</code> in your command and the same command can be used in the case of <code>condor_history</code> as well.</p>
+</li>
+</ol>
+<h2 id="exploring-ospool-job-class-ad-attributes">Exploring OSPool job class ad attributes<a class="headerlink" href="#exploring-ospool-job-class-ad-attributes" title="Permanent link">&para;</a></h2>
+<p>For this exercise, you will submit the three jobs defined in the submit file above,
+then examine their job class ad attributes.</p>
+<p>Here are some attributes that may be interesting:</p>
 <ul>
-<li><code>LastRemoteHost</code> contains the information/host name where your jobs ran the latest </li>
-<li><code>MATCH_EXP_JOBGLIDEIN_ResourceName</code> contains the information which machine ran your jobs, </li>
-<li><code>exitcode</code> can be used to get an idea about whether your job ran successfully or not. For most of the cases an <strong>exitcode=0</strong> means that your job ran successfully. </li>
-<li><code>holdreasoncode</code> contains the code of different reasons for which your jobs may go on hold. The details of the code can be found <a href="https://htcondor.readthedocs.io/en/latest/classad-attributes/job-classad-attributes.html?highlight=HoldReasonCode#job-classad-attributes">here</a></li>
-<li><code>MemoryUsage</code> shows the current memory used by your job.</li>
-<li><code>NumHoldsByReason</code> The value of this attribute is a (nested) classad containing a count of how many times a job has been placed on hold grouped by the reason the job went on hold</li>
-<li><code>NumJobStarts</code> contain the information about how many time the job started. if the value is 1 that means the job ran only on one site.</li>
-<li><code>MachineAttrGLIDEIN_ResourceNameN</code> indicates the name of the machine where the job ran. The integer value of <strong>N</strong> represent the execution attempt number. 0 is the recent execution and the highest integer value is the oldest execution attempt.</li>
+<li><code>CpusProvisioned</code> is the number of CPUs given to your job for the current or most recent run</li>
+<li><code>ResidentSetSize_RAW</code> is the maximum amount of memory that HTCondor has noticed your job using (in KB)</li>
+<li><code>DiskUsage_RAW</code> is the maximum amount of disk that HTCondor has noticed your job using (in MB)</li>
+<li><code>NumJobStarts</code> is the number of times HTCondor has started your job; <code>1</code> is typical for a running job, and higher counts may indicate issues running the job</li>
+<li><code>LastRemoteHost</code> identifies the name for the slot where your job is running or most recently ran</li>
+<li><code>MachineAttrGLIDEIN_ResourceName*N*</code> is a set of numbered attributes that identify the most recent sites where your job ran; <em>N</em> is <code>0</code> for the most recent (or current) run, <code>1</code> for the previous run, and so on up to <code>9</code></li>
+<li><code>ExitCode</code> exists only if your job exited (completed) at least once; a value of <code>0</code> typically means success</li>
+<li><code>HoldReasonCode</code> exists only if your job went on hold; if so, it is a number corresponding to the main hold reason
+    (see <a href="https://htcondor.readthedocs.io/en/latest/classad-attributes/job-classad-attributes.html?highlight=HoldReasonCode#job-classad-attributes">here</a> for details)</li>
+<li><code>NumHoldsByReason</code> is a list of all of the main reasons your job has gone on hold so far with counts of each hold type</li>
 </ul>
-<p>You can look for these <code>Job Class Ad</code> in the jobs in <code>condor_history</code> too.</p>
+<p>Let&rsquo;s explore these attributes on real jobs.</p>
+<ol>
+<li>
+<p>Submit the jobs (above) and note the cluster ID</p>
+</li>
+<li>
+<p>When one job from the cluster is running, view all of its job class ad attributes:</p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$ </span>condor_q -l &lt;JobId&gt;
+</code></pre></div>
+
+<p>where <code>&lt;JobId&gt;</code> is your job's ID.</p>
+<p>This command lists all of the job&rsquo;s class ad attributes.
+Details of some of the attributes are in the
+<a href="https://htcondor.readthedocs.io/en/latest/classad-attributes/job-classad-attributes.html">HTcondor Manual</a>.
+Others are defined (and not well documented) only for the OSPool.
+Can you find any of the attributes listed above?</p>
+</li>
+<li>
+<p>Next, use <code>condor_q -af &lt;AttributeName&gt;</code> to examine one attribute at a time for several jobs:</p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$ </span>condor_q -af NumJobStarts &lt;ClusterID&gt;
+</code></pre></div>
+
+<p>where <code>&lt;ClusterID&gt;</code> is the HTCondor cluster ID noted above.</p>
+<p>What does the output tell you?</p>
+</li>
+<li>
+<p>Finally, display several attributes at once for the jobs:</p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$ </span>condor_q -af ClusterID ProcID NumJobStarts DiskUsage_RAW LastRemoteHost HoldReasonCode &lt;ClusterID&gt;
+</code></pre></div>
+
+<p>Why do some values appear as <code>undefined</code>?</p>
+</li>
+</ol>
                 
               
               
