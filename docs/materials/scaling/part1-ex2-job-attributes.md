@@ -108,6 +108,6 @@ Let&rsquo;s explore these attributes on real jobs.
 1.  Finally, display several attributes at once for the jobs:
 
         :::console
-        $ condor_q -af ClusterID ProcID NumJobStarts DiskUsage_RAW LastRemoteHost HoldReasonCode <ClusterID>
+        $ condor_q -af:j NumJobStarts DiskUsage_RAW LastRemoteHost HoldReasonCode <ClusterID>
 
     Why do some values appear as `undefined`?
