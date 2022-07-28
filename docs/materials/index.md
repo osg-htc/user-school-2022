@@ -134,6 +134,16 @@ View the slides
 
 ## Extra Topics
 
+### Containers and GPUs
+
+View the slides
+([PDF](containers/files/osgus22-containers.pdf),
+[PowerPoint](containers/files/osgus22-containers.pptx))
+
+- [Exercise 1.1: Building a Singularity Container](containers/part1-ex1-building.md)
+- [Exercise 1.2: Using Containers in Jobs](containers/part1-ex2-running.md)
+- [Exercise 1.3: Running a GPU job](containers/part1-ex3-gpus.md)
+
 <!-- BEGIN EXTRA TOPICS THAT ARE NOT READY YET
 
 ### Workflows with DAGMan
@@ -147,19 +157,6 @@ View the **DRAFT** slides
 - [Exercise 1.4: Handling jobs that fail with DAGMan](workflows/part1-ex4-failed-dag.md)
 - [Bonus Exercise 4.5: HTCondor challenges](workflows/part1-ex5-challenges.md)
 
-<!-- BEGIN EXTRA TOPICS THAT ARE NOT READY YET
-
-### Containers (and GPUs?)
-
-View the slides
-([PDF](gpus/files/osgvsp21-gpus-containers.pdf),
-[PowerPoint](gpus/files/osgvsp21-gpus-containers.pptx))
-
-- [Exercise 1.1: Containers Overview](gpus/part1-ex1-containers-overview.md)
-- [Exercise 1.2: Running a CPU job](gpus/part1-ex2-cpu-jobs.md)
-- [Exercise 1.3: Running a GPU job](gpus/part1-ex3-gpu-jobs.md)
-
-END EXTRA TOPICS THAT ARE NOT READY YET -->
 
 ### Self-checkpointing for long-running jobs
 
