@@ -1500,7 +1500,7 @@ Can you find any of the attributes listed above?</p>
 </li>
 <li>
 <p>Finally, display several attributes at once for the jobs:</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">$ </span>condor_q -af ClusterID ProcID NumJobStarts DiskUsage_RAW LastRemoteHost HoldReasonCode &lt;ClusterID&gt;
+<div class="codehilite"><pre><span></span><code><span class="gp">$ </span>condor_q -af:j NumJobStarts DiskUsage_RAW LastRemoteHost HoldReasonCode &lt;ClusterID&gt;
 </code></pre></div>
 
 <p>Why do some values appear as <code>undefined</code>?</p>
