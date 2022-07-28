@@ -100,5 +100,9 @@ nav:
       - Exercise 1.3:             materials/workflows/part1-ex3-complex-dag.md
       - Exercise 1.4:             materials/workflows/part1-ex4-failed-dag.md
       - Bonus Exercises 1.5:      materials/workflows/part1-ex5-challenges.md
+    - Containers/GPU Exercises:
+      - Exercise 1.1:               materials/containers/part1-ex1-building.md
+      - Exercise 1.2:               materials/containers/part1-ex2-running.md
+      - Exercise 1.3:               materials/containers/part1-ex3-gpus.md
     - Checkpointing Exercises:
       - Exercise 1.1:               materials/checkpoint/part1-ex1-checkpointing.md
