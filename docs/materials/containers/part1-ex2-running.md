@@ -108,7 +108,11 @@ queue 1
 
 Run the job and verify the output.
 
-You an also try running the job without the `+SingularityImage` line and see what happens.
+## Challenges
+
+ 1. You an also try running the job without the `+SingularityImage` line and see what happens.
+ 1. Move the image to `/public/USERNAME/...` and use Stash to get the image to the job. The
+    submit file should look something like `+SingularityImage = "stash:///osgconnect/public/USERNAME/...`
 
 
 
