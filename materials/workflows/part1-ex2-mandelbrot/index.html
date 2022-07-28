@@ -1360,8 +1360,8 @@
 <li>
 <p>Run goatbroat 4 times:</p>
 <div class="codehilite"><pre><span></span><code><span class="gp">username@learn $ </span>goatbrot -i <span class="m">1000</span> -o tile_000000_000000.ppm -c -0.75,0.75 -w <span class="m">1</span>.5 -s <span class="m">500</span>,500
-<span class="gp">username@learn $ </span>goatbrot -i <span class="m">1000</span> -o tile_000000_000001.ppm -c <span class="m">0</span>.75,0.75 -w <span class="m">1</span>.5 -s <span class="m">500</span>,500 
-<span class="gp">username@learn $ </span>goatbrot -i <span class="m">1000</span> -o tile_000001_000000.ppm -c -0.75,-0.75 -w <span class="m">1</span>.5 -s <span class="m">500</span>,500 
+<span class="gp">username@learn $ </span>goatbrot -i <span class="m">1000</span> -o tile_000000_000001.ppm -c <span class="m">0</span>.75,0.75 -w <span class="m">1</span>.5 -s <span class="m">500</span>,500
+<span class="gp">username@learn $ </span>goatbrot -i <span class="m">1000</span> -o tile_000001_000000.ppm -c -0.75,-0.75 -w <span class="m">1</span>.5 -s <span class="m">500</span>,500
 <span class="gp">username@learn $ </span>goatbrot -i <span class="m">1000</span> -o tile_000001_000001.ppm -c <span class="m">0</span>.75,-0.75 -w <span class="m">1</span>.5 -s <span class="m">500</span>,500
 </code></pre></div>
 
@@ -1375,15 +1375,15 @@
 </ol>
 <p>This will produce the same image as above. We divided the image space into a 2×2 grid and ran <code>goatbrot</code> on each section of the grid. The built-in <code>montage</code> program stitches the files together and writes out the final image in JPEG format.</p>
 <h2 id="view-the-image">View the Image!<a class="headerlink" href="#view-the-image" title="Permanent link">&para;</a></h2>
-<p>Run the commands above so that you have the Mandelbrot image. 
-When you create the image, you might wonder how you can view it. 
+<p>Run the commands above so that you have the Mandelbrot image.
+When you create the image, you might wonder how you can view it.
 If you're comfortable with <code>scp</code> or another method, you can copy it back to your computer to view it. Otherwise you can view it in your web browser in three easy steps:</p>
 <ol>
 <li>
 <p>Make your web directory (you only need to do this once):</p>
 <div class="codehilite"><pre><span></span><code><span class="gp">username@learn $ </span><span class="nb">cd</span> ~
-<span class="gp">username@learn $ </span>mkdir public_html 
-<span class="gp">username@learn $ </span>chmod <span class="m">0711</span> . 
+<span class="gp">username@learn $ </span>mkdir public_html
+<span class="gp">username@learn $ </span>chmod <span class="m">0711</span> .
 <span class="gp">username@learn $ </span>chmod <span class="m">0755</span> public_html
 </code></pre></div>
 
@@ -1395,7 +1395,7 @@ If you're comfortable with <code>scp</code> or another method, you can copy it b
 
 </li>
 <li>
-<p>Access <code>http://learn.chtc.wisc.edu/~&lt;USERNAME&gt;/mandel.jpg</code> in your web browser (change <span style="color:RED">&lt;USERNAME&gt;</span> to your username on <code>learn.chtc.wisc.edu</code>, keeping the <code>~</code>).</p>
+<p>Access <code>http://learn.chtc.wisc.edu/~&lt;USERNAME&gt;/mandel.jpg</code> in your web browser (be sure to use "http://" and change <span style="color:RED">&lt;USERNAME&gt;</span> to your username on <code>learn.chtc.wisc.edu</code>, keeping the <code>~</code>).</p>
 </li>
 </ol>
                 

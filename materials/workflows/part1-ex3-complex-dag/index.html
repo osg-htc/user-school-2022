@@ -1517,15 +1517,14 @@ PARENT g1 g2 g3 g4 CHILD montage
 <p>Submit your DAG:</p>
 <div class="codehilite"><pre><span></span><code><span class="gp">username@learn $ </span>condor_submit_dag goatbrot.dag
 <span class="go">-----------------------------------------------------------------------</span>
-<span class="go">File for submitting this DAG to Condor           : goatbrot.dag.condor.sub</span>
+<span class="go">File for submitting this DAG to HTCondor           : goatbrot.dag.condor.sub</span>
 <span class="go">Log of DAGMan debugging messages                 : goatbrot.dag.dagman.out</span>
-<span class="go">Log of Condor library output                     : goatbrot.dag.lib.out</span>
-<span class="go">Log of Condor library error messages             : goatbrot.dag.lib.err</span>
+<span class="go">Log of HTCondor library output                     : goatbrot.dag.lib.out</span>
+<span class="go">Log of HTCondor library error messages             : goatbrot.dag.lib.err</span>
 <span class="go">Log of the life of condor_dagman itself          : goatbrot.dag.dagman.log</span>
 
 <span class="go">Submitting job(s).</span>
-<span class="go">1 job(s) submitted to cluster 71.</span>
-
+<span class="go">1 job(s) submitted to cluster 236879.</span>
 <span class="go">-----------------------------------------------------------------------</span>
 </code></pre></div>
 
@@ -1537,54 +1536,54 @@ PARENT g1 g2 g3 g4 CHILD montage
 <div class="codehilite"><pre><span></span><code><span class="gp">username@learn $ </span>condor_watch_q
 </code></pre></div>
 
-<p><span style="color:RED"><strong>If you're quick enough, you may have seen DAGMan running as the lone job, before it submitted additional job nodes:</strong></span> </p>
+<p><span style="color:RED"><strong>If you're quick enough, you may have seen DAGMan running as the lone job, before it submitted additional job nodes:</strong></span></p>
 <div class="codehilite"><pre><span></span><code><span class="go">BATCH                IDLE  RUN  DONE  TOTAL  JOB_IDS</span>
-<span class="go">goatbrot.dag+222059     -    1     -      1  222059.0</span>
+<span class="go">goatbrot.dag+236879     -    1     -      1  236879.0</span>
 
 <span class="go">[=============================================================================]</span>
 
 <span class="go">Total: 1 jobs; 1 running</span>
 
-<span class="go">Updated at 2021-07-28 13:52:57</span>
+<span class="go">Updated at 2022-07-27 15:06:52</span>
 </code></pre></div>
 
 <p><span style="color:RED"><strong>DAGMan has submitted the goatbrot jobs, but they haven't started running yet</strong></span></p>
 <div class="codehilite"><pre><span></span><code><span class="go">BATCH                IDLE  RUN  DONE  TOTAL  JOB_IDS</span>
-<span class="go">goatbrot.dag+222059     4    1     -      5  222059.0 ... 222063.0</span>
+<span class="go">goatbrot.dag+236879     4    1     -      5  236879.0 ... 236883.0</span>
 
 <span class="go">[===============--------------------------------------------------------------]</span>
 
 <span class="go">Total: 5 jobs; 4 idle, 1 running</span>
 
-<span class="go">Updated at 2021-07-28 13:53:53</span>
+<span class="go">Updated at 2022-07-27 15:07:45</span>
 </code></pre></div>
 
-<p><span style="color:RED"><strong>They're running</strong></span> </p>
+<p><span style="color:RED"><strong>They're running</strong></span></p>
 <div class="codehilite"><pre><span></span><code><span class="go">BATCH                IDLE  RUN  DONE  TOTAL  JOB_IDS</span>
-<span class="go">goatbrot.dag+222059     -    5     -      5  222059.0 ... 222063.0</span>
+<span class="go">goatbrot.dag+236879     -    5     -      5  236879.0 ... 236883.0</span>
 <span class="go">[=============================================================================]</span>
 
 <span class="go">Total: 5 jobs; 5 running</span>
 
-<span class="go">Updated at 2021-07-28 13:54:33</span>
+<span class="go">Updated at 2022-07-27 15:08:48</span>
 </code></pre></div>
 
 <p><span style="color:RED"><strong>They finished, but DAGMan hasn't noticed yet. It only checks periodically:</strong></span></p>
 <div class="codehilite"><pre><span></span><code><span class="go">BATCH                IDLE  RUN  DONE  TOTAL  JOB_IDS</span>
-<span class="go">goatbrot.dag+222059     -    1    4     -      5  222059.0 ... 222063.0</span>
+<span class="go">goatbrot.dag+236879     -    1    4     -      5  236879.0 ... 236883.0</span>
 
 <span class="go">[##############################################################===============]</span>
 
 <span class="go">Total: 5 jobs; 4 completed, 1 running</span>
 
-<span class="go">Updated at 2021-07-28 13:55:13</span>
+<span class="go">Updated at 2022-07-27 15:09:54</span>
 </code></pre></div>
 
 <p>Eventually, you'll see the montage job submitted, then running, then leave the queue, and then DAGMan will leave the queue.</p>
 </li>
 <li>
 <p>Examine your results. For some reason, goatbrot prints everything to stderr, not stdout.</p>
-<div class="codehilite"><pre><span></span><code><span class="gp">username@learn $ </span>cat goatbrot.err.0.0 
+<div class="codehilite"><pre><span></span><code><span class="gp">username@learn $ </span>cat goatbrot.err.0.0
 <span class="go">Complex image: Center: -0.75 + 0.75i Width: 1.5 Height: 1.5 Upper Left: -1.5 + 1.5i Lower Right: 0 + 0i</span>
 
 <span class="go">Output image: Filename: tile_0_0.ppm Width, Height: 500, 500 Theme: beej Antialiased: no</span>
