@@ -35,6 +35,7 @@ nav:
   - COVID policy:                   covid-policy.md
   - Logistics:
     - General information:          logistics/index.md
+    - Reimbursements:               logistics/reimbursements.md
     - Travel:
       - Advice:                     logistics/travel-advice.md
       - Local transportation:       logistics/local-transportation.md
