@@ -1,6 +1,6 @@
 # Creating a Long-Term OSPool Project
 
-To continue using your OSG account after the school, you will 
+To continue using your OSG  Connect account after the school, you will 
 need to request a long-term project. Please complete the following 
 steps by September 9 to transition to a long-term project and access. 
 
