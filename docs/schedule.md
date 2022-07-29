@@ -462,7 +462,7 @@ The Union should be open, and so things like ice cream and beer will be availabl
     <tr>
         <td>12:00</td>
         <td>12:20</td>
-        <td>Group photo (outside)</td>
+        <td>Group photo (inside, near lunch area)</td>
         <td>—</td>
     </tr>
     <tr>
