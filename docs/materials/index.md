@@ -121,6 +121,17 @@ View the slides
 - [Exercise 3.2: Shared filesystems for large output](data/part3-ex2-output.md)
 
 
+## Showcase, Part 1
+
+-   &ldquo;Leveraging computer vision systems for monitoring animal health and productivity on dairy farms&rdquo;,
+    Ariana Negreiro, Animal & Dairy Sciences, UW&ndash;Madison
+    ([PDF](showcase/files/osgus22-day3-2-showcase-negreiro.pdf))
+
+-   &ldquo;High throughput computing to study the functions of plant genes&rdquo;,
+    Edgar Spalding, Botany, UW&ndash;Madison
+    ([PDF](showcase/files/osgus22-day3-3-showcase-spalding.pdf))
+
+
 ## Scaling Up
 
 View the slides
@@ -169,6 +180,17 @@ View the slides
 Slides will be posted here.
 
 END EXTRA TOPICS THAT ARE NOT READY YET -->
+
+
+## Showcase, Part 2
+
+-   &ldquo;Investigating the strong nuclear force with the OSG&rdquo;,
+    Connor Natzke, Physics, Colorado School of Mines
+    ([PDF](showcase/files/osgus22-day5-3-showcase-natzke.pdf))
+
+-   &ldquo;Simulating the spread of flying insects using HTC&rdquo;,
+    Matthew Garcia, Forest & Wildlife Ecology, UW&ndash;Madison
+    ([PDF](showcase/files/osgus22-day5-4-showcase-garcia.pdf))
 
 
 ## Closing
