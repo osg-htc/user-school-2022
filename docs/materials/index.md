@@ -1,12 +1,10 @@
 
 # OSG Virtual School Materials
 
-## School Overview and Intro
+## Welcome
 
-<!-- View the slides
-([PDF](files/osgvsp21-overview.pdf),
-[PowerPoint](files/osgvsp21-overview.pptx))
--->
+View the slides
+([PDF](welcome/files/osgus22-day1-1-welcome-cartwright.pdf))
 
 ## Intro to HTC and HTCondor Job Execution
 
@@ -22,7 +20,6 @@ View the slides
 - [Exercise 1.4: Read and interpret log files](htcondor/part1-ex4-logs.md)
 - [Exercise 1.5: Determining Resource Needs](htcondor/part1-ex5-request.md)
 - [Exercise 1.6: Remove jobs from the queue](htcondor/part1-ex6-remove.md)
-
 
 ### Bonus Exercises: Job Attributes and Handling
 
@@ -123,6 +120,7 @@ View the slides
 - [Exercise 3.1: Shared filesystems for large input](data/part3-ex1-input.md)
 - [Exercise 3.2: Shared filesystems for large output](data/part3-ex2-output.md)
 
+
 ## Scaling Up
 
 View the slides
@@ -131,6 +129,7 @@ View the slides
 ### Scaling Up Exercises
 
 -   [Exercise 1.1: Organizing HTC workloads](scaling/part1-ex1-organization.md)
+
 
 ## Extra Topics
 
@@ -157,10 +156,11 @@ View the slides
 
 ### Self-checkpointing for long-running jobs
 
-View the **DRAFT** slides
-([PDF](checkpoint/files/osgus22-day5-1-selfcheckpointing-DRAFT-20220720.pdf))
+View the slides
+([PDF](checkpoint/files/osgus22-day5-1-selfcheckpointing.pdf),
+[PowerPoint](checkpoint/files/osgus22-day5-1-selfcheckpointing.pptx))
 
--   [Exercise 1.1: **DRAFT**: Trying out self-checkpointing](checkpoint/part1-ex1-checkpointing.md)
+-   [Exercise 1.1: Trying out self-checkpointing](checkpoint/part1-ex1-checkpointing.md)
 
 <!-- BEGIN EXTRA TOPICS THAT ARE NOT READY YET
 
@@ -170,3 +170,9 @@ Slides will be posted here.
 
 END EXTRA TOPICS THAT ARE NOT READY YET -->
 
+
+## Closing
+
+View the slides
+([PDF](closing/files/osgus22-day5-5-closing-cartwright.pdf),
+PowerPoint too large)
