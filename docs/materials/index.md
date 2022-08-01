@@ -175,4 +175,4 @@ END EXTRA TOPICS THAT ARE NOT READY YET -->
 
 View the slides
 ([PDF](closing/files/osgus22-day5-5-closing-cartwright.pdf),
-[PowerPoint](closing/files/osgus22-day5-5-closing-cartwright.pptx))
+PowerPoint too large)
