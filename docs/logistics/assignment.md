@@ -37,8 +37,8 @@ but be sure to start with the high-level plan so we understand the context.
 
 ### Format guidelines
 
--   Write at least a full page and **no more** than TODO pages of text
--   Add images, tables, or figures if you like; they may cause your total page count to go over TODO pages
+-   Write at least a full page and **no more** than three pages of text (single-spaced)
+-   Add images, tables, or figures if you like; they may cause your total page count to go over three pages
 -   Do not take time to add citations, references, etc.
 -   Email your write-up as a PDF (only!) to the <user-school@opensciencegrid.org> list
 
