@@ -24,9 +24,9 @@ We will not publish your write-up&nbsp;&mdash; it is just between you and us.
 
 For the content, think of a written version of a lightning talk:
 
-1.  Describe your science for a broad audience in about one paragraph (this is a good life skill!)
-1.  Describe one computing challenge that you want to work on (maybe one paragraph to one page)
-1.  Explain what you plan to do on that challenge now that you have learned new things at the School
+1.  Describe your science for a broad audience in about 1 paragraph (this is a good life skill!)
+1.  Describe one computing challenge that you want to work on (maybe 1 paragraph to 1 page)
+1.  Explain your plan to work on that challenge with the new things you learned at the School
 
 For the last part, your audience is the School staff,
 so you do not have to re-explain concepts and methods that we explained here.
